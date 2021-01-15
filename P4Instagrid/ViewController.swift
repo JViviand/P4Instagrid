@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     // Instagrid
     @IBOutlet weak var labelInstagrid: UILabel!
@@ -28,9 +28,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var lastBouton: UIButton!
     @IBOutlet weak var lastImageView: UIImageView!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
 
     @IBAction func firstHiddenBouton(_ sender: Any) {
@@ -67,5 +67,19 @@ class ViewController: UIViewController {
         buttonPictureBasD.isHidden = false
     }
     
+    @IBAction func openPhotoLibraryButton(_ sender: Any) {
+        if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+            let Picker = UIImagePickerController()
+            Picker.delegate = self
+            Picker.sourceType = .photoLibrary;
+            Picker.allowsEditing = true
+            present(Picker, animated: true, completion: nil)
+        }
+    }
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
+        
+        dismiss(animated:true, completion: nil)
+    }
 }
 

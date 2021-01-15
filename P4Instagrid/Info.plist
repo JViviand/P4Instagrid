@@ -50,6 +50,10 @@
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>utilisation de la galerie de photo</string>
+	<key>NSCameraUsageDescription</key>
+	<string>utilisation de l&apos;appareil photo</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
