@@ -103,10 +103,10 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                                 <state key="normal" backgroundImage="Layout 1"/>
                                                 <connections>
-                                                    <action selector="choiceButtonHidden:" destination="BYZ-38-t0r" eventType="touchUpInside" id="g5x-Lx-mMG"/>
+                                                    <action selector="buttonForView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="g5x-Lx-mMG"/>
                                                 </connections>
                                             </button>
-                                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Selected" translatesAutoresizingMaskIntoConstraints="NO" id="oRA-vd-7GG" userLabel="FirstImageView">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Selected" translatesAutoresizingMaskIntoConstraints="NO" id="oRA-vd-7GG" userLabel="FirstImageView">
                                                 <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                             </imageView>
                                         </subviews>
@@ -130,7 +130,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                                 <state key="normal" backgroundImage="Layout 2"/>
                                                 <connections>
-                                                    <action selector="choiceButtonHidden:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bbK-ID-70l"/>
+                                                    <action selector="buttonForView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bbK-ID-70l"/>
                                                 </connections>
                                             </button>
                                             <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Selected" translatesAutoresizingMaskIntoConstraints="NO" id="nVf-cg-deO" userLabel="CenterImageView">
@@ -157,7 +157,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                                 <state key="normal" backgroundImage="Layout 3"/>
                                                 <connections>
-                                                    <action selector="choiceButtonHidden:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vSe-dw-i7A"/>
+                                                    <action selector="buttonForView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vSe-dw-i7A"/>
                                                 </connections>
                                             </button>
                                             <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Selected" translatesAutoresizingMaskIntoConstraints="NO" id="xD3-jV-r87" userLabel="LastImageView">
@@ -226,11 +226,11 @@
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="amv-Gy-4LD"/>
+                                <exclude reference="qir-fv-Lbu"/>
                                 <exclude reference="MUk-TC-5L8"/>
                                 <exclude reference="vBn-cm-5Sj"/>
                                 <exclude reference="VJf-4F-MFt"/>
                                 <exclude reference="Ogf-VX-be8"/>
-                                <exclude reference="qir-fv-Lbu"/>
                                 <exclude reference="INo-LM-Mgl"/>
                                 <exclude reference="fg5-7D-E5i"/>
                             </mask>
@@ -239,6 +239,7 @@
                             <mask key="constraints">
                                 <exclude reference="JwY-NO-PoU"/>
                                 <include reference="amv-Gy-4LD"/>
+                                <include reference="qir-fv-Lbu"/>
                                 <include reference="MUk-TC-5L8"/>
                                 <exclude reference="UkE-U7-jC1"/>
                                 <exclude reference="mn1-6W-yZx"/>
@@ -249,7 +250,6 @@
                                 <exclude reference="afK-c9-JcX"/>
                                 <include reference="Ogf-VX-be8"/>
                                 <exclude reference="bIV-ES-XMG"/>
-                                <include reference="qir-fv-Lbu"/>
                                 <include reference="INo-LM-Mgl"/>
                                 <exclude reference="UAx-jb-3mh"/>
                                 <include reference="fg5-7D-E5i"/>
@@ -258,24 +258,18 @@
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="ButtonPictureHautG" destination="80X-DQ-ya8" id="0dK-Dw-yYr"/>
-                        <outlet property="buttonPictureBasD" destination="f9V-TB-h1v" id="UE9-3S-jMe"/>
-                        <outlet property="buttonPictureBasG" destination="spO-rh-Hdw" id="cvr-et-inK"/>
-                        <outlet property="buttonPictureHautD" destination="JSy-md-Kgv" id="d37-bl-vQP"/>
-                        <outlet property="centerBouton" destination="YnE-8q-d3d" id="VRF-n2-NpY"/>
+                        <outlet property="buttonPictureFirstHigh" destination="80X-DQ-ya8" id="nrj-zE-RpW"/>
+                        <outlet property="buttonPictureFirstLow" destination="spO-rh-Hdw" id="cvr-et-inK"/>
+                        <outlet property="buttonPictureLastHigh" destination="JSy-md-Kgv" id="d37-bl-vQP"/>
+                        <outlet property="buttonPictureLastLow" destination="f9V-TB-h1v" id="UE9-3S-jMe"/>
+                        <outlet property="centerButton" destination="YnE-8q-d3d" id="VRF-n2-NpY"/>
                         <outlet property="centerImageView" destination="nVf-cg-deO" id="FIC-wH-BfV"/>
-                        <outlet property="centerX" destination="wIm-6Q-AEa" id="hdc-QO-aE1"/>
-                        <outlet property="centerY" destination="yom-Cy-VOM" id="E6H-G5-WoU"/>
-                        <outlet property="firstBouton" destination="UkW-K6-4Zw" id="A6g-4h-wLy"/>
+                        <outlet property="firstButton" destination="UkW-K6-4Zw" id="A6g-4h-wLy"/>
                         <outlet property="firstImageView" destination="oRA-vd-7GG" id="AaP-EK-csh"/>
-                        <outlet property="labelInstagrid" destination="Nxl-g7-mKh" id="p4p-bJ-10w"/>
-                        <outlet property="lastBouton" destination="44o-bA-Rhs" id="AMV-x8-wPf"/>
+                        <outlet property="lastButton" destination="44o-bA-Rhs" id="AMV-x8-wPf"/>
                         <outlet property="lastImageView" destination="xD3-jV-r87" id="nAY-Uf-erM"/>
                         <outlet property="swipeLabel" destination="LxL-4Z-OOt" id="cPv-nG-x1P"/>
                         <outlet property="viewBlue" destination="Sr4-OL-v8g" id="UXc-Ty-51C"/>
-                        <outletCollection property="swipeViewArrow" destination="Sr4-OL-v8g" collectionClass="NSMutableArray" id="cha-Lu-oDS"/>
-                        <outletCollection property="swipeViewArrow" destination="LxL-4Z-OOt" collectionClass="NSMutableArray" id="1Aa-8a-0uy"/>
-                        <outletCollection property="swipeViewArrow" destination="VCS-gS-2YR" collectionClass="NSMutableArray" id="9t3-d0-3Xt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

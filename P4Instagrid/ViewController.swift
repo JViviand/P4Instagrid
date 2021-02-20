@@ -8,29 +8,24 @@
 import UIKit
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    // vue bleu
-    @IBOutlet var swipeViewArrow: [UIView]!
+    
+    // view
     @IBOutlet weak var viewBlue: UIView!
-    // Instagrid
-    @IBOutlet weak var labelInstagrid: UILabel!
     // Swipe Label
     @IBOutlet weak var swipeLabel: UILabel!
     // bouton pour les photos
-    @IBOutlet weak var ButtonPictureHautG: UIButton!
-    @IBOutlet weak var buttonPictureHautD: UIButton!
-    @IBOutlet weak var buttonPictureBasG: UIButton!
-    @IBOutlet weak var buttonPictureBasD: UIButton!
-    
+    @IBOutlet weak var buttonPictureFirstHigh: UIButton!
+    @IBOutlet weak var buttonPictureLastHigh: UIButton!
+    @IBOutlet weak var buttonPictureFirstLow: UIButton!
+    @IBOutlet weak var buttonPictureLastLow: UIButton!
     // bouton avec differente vue ou l'image valider s'affiche ou non
-    @IBOutlet weak var firstBouton: UIButton!
+    @IBOutlet weak var firstButton: UIButton!
     @IBOutlet weak var firstImageView: UIImageView!
-    @IBOutlet weak var centerBouton: UIButton!
+    @IBOutlet weak var centerButton: UIButton!
     @IBOutlet weak var centerImageView: UIImageView!
-    @IBOutlet weak var lastBouton: UIButton!
+    @IBOutlet weak var lastButton: UIButton!
     @IBOutlet weak var lastImageView: UIImageView!
     
-    @IBOutlet weak var centerX: NSLayoutConstraint!
-    @IBOutlet weak var centerY: NSLayoutConstraint!
     
     
     private var buttonImage: UIButton?
@@ -40,6 +35,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.viewDidLoad()
         swipeLabel(bool: UIApplication.shared.statusBarOrientation.isPortrait)
         addGestureRecognizer()
+        buttonForView(firstButton)
     }
     
     // fonction pour changer le label Swipe
@@ -66,35 +62,35 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     //action pour permettre de selectionner la vue que l'on souhaite
     
-    @IBAction func choiceButtonHidden(_ sender: UIButton) {
+    @IBAction func buttonForView(_ sender: UIButton) {
         switch sender {
-        case firstBouton:
+        case firstButton:
             firstImageView.isHidden = false
             centerImageView.isHidden = true
             lastImageView.isHidden = true
             
-            ButtonPictureHautG.isHidden = false
-            buttonPictureHautD.isHidden = true
-            buttonPictureBasG.isHidden = false
-            buttonPictureBasD.isHidden = false
-        case centerBouton:
+            buttonPictureFirstHigh.isHidden = false
+            buttonPictureLastHigh.isHidden = true
+            buttonPictureFirstLow.isHidden = false
+            buttonPictureLastLow.isHidden = false
+        case centerButton:
             firstImageView.isHidden = true
             centerImageView.isHidden = false
             lastImageView.isHidden = true
             
-            ButtonPictureHautG.isHidden = false
-            buttonPictureHautD.isHidden = false
-            buttonPictureBasG.isHidden = false
-            buttonPictureBasD.isHidden = true
-        case lastBouton:
+            buttonPictureFirstHigh.isHidden = false
+            buttonPictureLastHigh.isHidden = false
+            buttonPictureFirstLow.isHidden = false
+            buttonPictureLastLow.isHidden = true
+        case lastButton:
             firstImageView.isHidden = true
             centerImageView.isHidden = true
             lastImageView.isHidden = false
             
-            ButtonPictureHautG.isHidden = false
-            buttonPictureHautD.isHidden = false
-            buttonPictureBasG.isHidden = false
-            buttonPictureBasD.isHidden = false
+            buttonPictureFirstHigh.isHidden = false
+            buttonPictureLastHigh.isHidden = false
+            buttonPictureFirstLow.isHidden = false
+            buttonPictureLastLow.isHidden = false
         default:
             break
         }
@@ -132,24 +128,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     private func animationX(with value: CGFloat) {
         UIView.animate(withDuration: 0.5, delay: 0.3, options: [.curveEaseOut]) {
-            self.viewBlue.transform = CGAffineTransform(translationX: 0, y: -400)
+            self.viewBlue.transform = CGAffineTransform(translationX: 0, y: value)
         } completion: { (success) in
-            UIView.animate(withDuration: 0.2, delay: 0, options: [.curveLinear]) {
-                self.viewBlue.transform = .identity
-            } completion: { (success) in
-                self.createPicture()
-            }
+            self.createPicture()
         }
     }
     private func animationY(value: CGFloat) {
         UIView.animate(withDuration: 0.5, delay: 0.3, options: [.curveEaseOut]) {
-            self.viewBlue.transform = CGAffineTransform(translationX: -400, y: 0)
+            self.viewBlue.transform = CGAffineTransform(translationX: value, y: 0)
         } completion: { (success) in
-            UIView.animate(withDuration: 0.2, delay: 0, options: [.curveLinear]) {
-                self.viewBlue.transform = .identity
-            } completion: { (success) in
-                self.createPicture()
-            }
+            self.createPicture()
         }
     }
     // share
